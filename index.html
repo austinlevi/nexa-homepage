@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -33,6 +32,9 @@
   </script>
 
   <!-- Styles -->
+HEAD
+  <link rel="stylesheet" href="assets/css/styles.css">
+ ecfbfbd (Updated homepage design and content)
   <style>
     :root{
       --bg:#0b1020;
@@ -448,6 +450,32 @@
     // Export to global for inline handler
     window.handleSuccess = handleSuccess;
   </script>
+ HEAD
 </body>
 </html>
 
+<script>
+  // Apply saved theme on page load
+  document.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme") || "light";
+    document.documentElement.setAttribute("data-theme", savedTheme);
+  });
+
+  // Dark mode toggle
+  document.getElementById("dark-mode-toggle").addEventListener("click", () => {
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    const newTheme = currentTheme === "light" ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", newTheme);
+    localStorage.setItem("theme", newTheme);
+  });
+
+  // Mobile menu toggle
+  document.getElementById("menu-toggle").addEventListener("click", () => {
+    const nav = document.querySelector("nav");
+    nav.classList.toggle("open");
+    document.body.classList.toggle("menu-open");
+  });
+</script>
+
+</body>
+</html>
